@@ -2,9 +2,15 @@ package bank.magement.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
+
+    JButton loginButton,signupButton,clearButton;
+    JTextField cardnoTextField;
+    JPasswordField pinTextField;
 
     Login() {
 
@@ -29,7 +35,7 @@ public class Login extends JFrame {
         cardno.setFont(new Font("osward",Font.BOLD,28));
         cardno.setBounds(120,150,150,40);
 
-        JTextField cardnoTextField = new JTextField();
+         cardnoTextField = new JTextField();
         cardnoTextField.setBounds(300,150,250,30);
 
 
@@ -38,14 +44,38 @@ public class Login extends JFrame {
         pin.setFont(new Font("osward",Font.BOLD,28));
         pin.setBounds(120,220,250,30);
 
-        JTextField pinTextField = new JTextField();
+         pinTextField = new JPasswordField();
         pinTextField.setBounds(300,220,250,30);
+
+//        button label
+
+         loginButton = new JButton("Log In");
+        loginButton.setBounds(300,300,100,30);
+        loginButton.setBackground(Color.gray);
+        loginButton.setForeground(Color.white);
+        loginButton.setFocusable(false);
+        loginButton.addActionListener(this);
+
+         clearButton = new JButton("Clear");
+        clearButton.setBounds(450,300,100,30);
+        clearButton.setBackground(Color.red);
+        clearButton.setForeground(Color.white);
+        clearButton.setFocusable(false);
+        clearButton.addActionListener(this);
+
+         signupButton = new JButton("Sign up");
+        signupButton.setBounds(300,350,200,30);
+        signupButton.setBackground(Color.lightGray);
+        signupButton.setForeground(Color.white);
+        signupButton.setFocusable(false);
+        signupButton.addActionListener(this);
+
 
 
         this.setTitle("Bank Management System");
-        this.setSize(800, 400);
+        this.setSize(800, 500);
         this.setVisible(true);
-        this.setLocation(350, 200);
+        this.setLocation(550, 300);
         this.setLayout(null);
 
         getContentPane().setBackground(Color.white);
@@ -58,9 +88,25 @@ public class Login extends JFrame {
         this.add(cardnoTextField);
         this.add(pin);
         this.add(pinTextField);
+        this.add(loginButton);
+        this.add(clearButton);
+        this.add(signupButton);
     }
 
     public static void main(String[] args) {
         new Login();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+
+        if (actionEvent.getSource() == clearButton){
+             pinTextField.setText("");
+             cardnoTextField.setText("");
+        }else if (actionEvent.getSource() == loginButton){
+
+        }else {
+
+        }
     }
 }
