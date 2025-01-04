@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class Signup extends JFrame implements ActionListener {
@@ -194,7 +196,10 @@ public class Signup extends JFrame implements ActionListener {
         String formno = "" + getRandomNum();
         String name = nameField.getText();
         String fathersName = fathersNameField.getText();
-        String dob = dobField.getDateEditor().getUiComponent().getName();
+        Date dobDate = dobField.getDate();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dob = sdf.format(dobDate);
 
         String gender = null;
 
@@ -237,7 +242,7 @@ public class Signup extends JFrame implements ActionListener {
             PreparedStatement pstmt = c.c.prepareStatement(query);
             pstmt.setString(1, name);
             pstmt.setString(2, pin);
-            pstmt.setString(3, dob);
+            pstmt.setString(3, String.valueOf(dob));
 
 //            c.s.executeUpdate(query);
 
