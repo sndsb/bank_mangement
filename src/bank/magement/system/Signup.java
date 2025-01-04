@@ -46,9 +46,15 @@ public class Signup extends JFrame {
         gender.setBounds(100,270,250,40);
         gender.setFont(new Font("Raleway",Font.BOLD,22));
 
-        JTextField genderField = new JTextField();
-        genderField.setBounds(350,270,300,30);
+        JRadioButton male = new JRadioButton("Male");
+        male.setBounds(350,270,120,30);
 
+        JRadioButton female = new JRadioButton("Female");
+        female.setBounds(490,270,160,30);
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(male);
+        buttonGroup.add(female);
 
         JLabel email = new JLabel("Email : ");
         email.setBounds(100,310,250,40);
@@ -110,7 +116,8 @@ public class Signup extends JFrame {
         add(dob);
         add(dobField);
         add(gender);
-        add(genderField);
+        add(male);
+        add(female);
         add(email);
         add(emailField);
         add(martial);
