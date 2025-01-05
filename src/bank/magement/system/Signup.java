@@ -19,13 +19,13 @@ public class Signup extends JFrame implements ActionListener {
     JRadioButton male,female,married,unmarried,other;
     ButtonGroup buttonGroup,maritialBtn;
     JDateChooser dobField;
+    String formno = String.valueOf(getRandomNum());
 
     Signup(){
 
-
-        JLabel formno = new JLabel("Application Form No. " + getRandomNum());
-        formno.setBounds(140,20,600,40);
-        formno.setFont(new Font("Raleway",Font.BOLD,38));
+        JLabel applicationHead = new JLabel("Application Form No. " + formno);
+        applicationHead.setBounds(140,20,600,40);
+        applicationHead.setFont(new Font("Raleway",Font.BOLD,38));
 
         JLabel personalDetails = new JLabel("Page 1 : Personal Details");
         personalDetails.setBounds(290,60,400,40);
@@ -150,7 +150,7 @@ public class Signup extends JFrame implements ActionListener {
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(formno);
+        add(applicationHead);
         add(personalDetails);
         add(name);
         add(nameField);
@@ -193,7 +193,7 @@ public class Signup extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String formno = "" + getRandomNum();
+        String formno1 = formno;
         String name = nameField.getText();
         String fathersName = fathersNameField.getText();
         Date dobDate = dobField.getDate();
@@ -237,12 +237,13 @@ public class Signup extends JFrame implements ActionListener {
             Conn c = new Conn();
 
 //            String query = String.format("INSERT INTO user (name, pin, dob) VALUES ('%s', '%s', '%s')",name,pin,dob);
-            String query = "INSERT INTO user (name, pin, dob) VALUES (?, ?, ?)";
+            String query = "INSERT INTO user (name, pin, dob,formno) VALUES (?, ?, ?, ?)";
 
             PreparedStatement pstmt = c.c.prepareStatement(query);
             pstmt.setString(1, name);
             pstmt.setString(2, pin);
             pstmt.setString(3, String.valueOf(dob));
+            pstmt.setString(4,formno1);
 
 //            c.s.executeUpdate(query);
 
@@ -255,6 +256,8 @@ public class Signup extends JFrame implements ActionListener {
                 System.out.println("No rows were inserted.");
             }
 
+            setVisible(false);
+            new SignupTwo(formno).setVisible(true);
 
         }catch (Exception e){
 

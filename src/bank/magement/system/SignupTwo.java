@@ -242,7 +242,7 @@ public class SignupTwo extends JFrame implements ActionListener{
                 Conn c = new Conn();
 
 //            String query = String.format("INSERT INTO user (name, pin, dob) VALUES ('%s', '%s', '%s')",name,pin,dob);
-                String query = "INSERT INTO user_info1 (religion, category, income,education,occupation,pan,citizeship_no,senior_citizen,already_account) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO user_info1 (religion, category, income,education,occupation,pan,citizeship_no,senior_citizen,already_account,formno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement pstmt = c.c.prepareStatement(query);
                 pstmt.setString(1, religion);
@@ -254,6 +254,7 @@ public class SignupTwo extends JFrame implements ActionListener{
                 pstmt.setString(7,aadhar);
                 pstmt.setString(8,scitizen);
                 pstmt.setString(9,eaccount);
+                pstmt.setString(10,formno);
 
 //            c.s.executeUpdate(query);
 
