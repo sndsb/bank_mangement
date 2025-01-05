@@ -143,8 +143,8 @@ public class Signup extends JFrame implements ActionListener {
         nextBtn.setFocusable(false);
         nextBtn.addActionListener(this);
 
-        setSize(850,800);
-        setLocation(350,10);
+        setSize(850,750);
+        setLocation(500,120);
         getContentPane().setBackground(Color.white);
         setVisible(true);
         setLayout(null);
