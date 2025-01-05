@@ -27,7 +27,7 @@ public class Signup extends JFrame implements ActionListener {
         formno.setBounds(140,20,600,40);
         formno.setFont(new Font("Raleway",Font.BOLD,38));
 
-        JLabel personalDetails = new JLabel("Personal Details");
+        JLabel personalDetails = new JLabel("Page 1 : Personal Details");
         personalDetails.setBounds(290,60,400,40);
         personalDetails.setFont(new Font("Raleway",Font.BOLD,22));
 
